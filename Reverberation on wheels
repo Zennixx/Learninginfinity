@@ -1,0 +1,89 @@
+
+
+const int motorRF=3;
+const int motorRB=4;
+const int motorLF=5;
+const int motorLB=6;
+
+char bt;
+void setup()
+{
+ Serial.begin(9600);
+ pinMode(motorRF,OUTPUT);
+ pinMode(motorRB,OUTPUT);
+ pinMode(motorLF,OUTPUT);
+ pinMode(motorLB,OUTPUT);
+}
+
+
+void loop() {
+
+  delay(1000);
+ 
+bt=Serial.read();
+Serial.println(bt);
+
+if(bt=='F')
+{
+ forward(); 
+}
+
+if(bt=='B')
+{
+ backward(); 
+}
+
+if(bt=='L')
+{
+ left(); 
+}
+
+if(bt=='R')
+{
+ right(); 
+}
+
+if(bt=='S')
+{
+ Stop(); 
+}
+
+}
+void forward()
+{
+  digitalWrite(motorRF,HIGH);
+  digitalWrite(motorRB,LOW);
+  digitalWrite(motorLF,HIGH); 
+  digitalWrite(motorLB,LOW);
+}
+
+void backward()
+{
+  digitalWrite(motorRF,LOW);
+  digitalWrite(motorRB,HIGH);
+  digitalWrite(motorLF,LOW); 
+  digitalWrite(motorLB,HIGH);
+}
+void left()
+{
+ digitalWrite(motorRF,LOW);
+ digitalWrite(motorRB,HIGH);
+ digitalWrite(motorLF,LOW); 
+ digitalWrite(motorLB,LOW);
+}
+void right()
+{
+ 
+ digitalWrite(motorRF,LOW);
+ digitalWrite(motorRB,LOW);
+ digitalWrite(motorLF,LOW); 
+ digitalWrite(motorLB,HIGH);
+}
+void Stop()
+{
+  
+ digitalWrite(motorRF,LOW);
+ digitalWrite(motorRB,LOW);
+ digitalWrite(motorLF,LOW); 
+ digitalWrite(motorLB,LOW);
+}
